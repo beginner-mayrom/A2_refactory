@@ -13,7 +13,8 @@ app.use(express.json());
 //carregando o cabeçalho do html em outras páginas
 app.engine("handlebars", handlebars.engine({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-app.use(bodyParser.urlencoded({ extended: true }));
+//alterado de true para false
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //arquivos estáticos
@@ -28,7 +29,6 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
-
 
 app.get("/", (req, res) => res.send("Servidor rodando"));
 

@@ -1,23 +1,22 @@
 <form action="/update" method="POST">
 
-    {{#each products}}
-        <input class="text" type="text" name="_id" value="{{_id}}" readonly="true" placeholder="Id" required=""><br>
+        <input class="text" type="text" name="_id" value="{{products._id}}" readonly="true" placeholder="Id" required=""><br>
 
-        <input class="text" type="text" name="brand" value="{{brand}}" readonly="true" placeholder="Marca" required=""><br>
+        <input class="text" type="text" name="brand" value="{{products.brand}}" readonly="true" placeholder="Marca" required=""><br>
 
-        <input class="text" type="text" name="model" value="{{model}}" readonly="true" placeholder="Modelo" required=""><br>
+        <input class="text" type="text" name="model" value="{{products.model}}" readonly="true" placeholder="Modelo" required=""><br>
 
-        <input class="text" type="number" name="year" value="{{year}}" readonly="true" placeholder="Ano" required=""><br>
+        <input class="text" type="number" name="year" value="{{products.year}}" readonly="true" placeholder="Ano" required=""><br>
 
-        {{#each pieces}}
-        <input class="text" type="text" name="name" value="{{name}}" placeholder="Nome" required=""><br>
+        {{#each products.pieces}}
+        <input class="text" type="text" name="name" value="{{this.name}}" placeholder="Nome" required=""><br>
 
-        <input class="text" type="number" name="amount" value="{{amount}}" placeholder="Quantidade" required=""><br>
+        <input class="text" type="number" name="amount" value="{{this.amount}}" placeholder="Quantidade" required=""><br>
 
-        <input class="text" type="text" name="description" value="{{description}}" placeholder="Descrição" required=""><br><br>
+        <input class="text" type="text" name="description" value="{{this.description}}" placeholder="Descrição" required=""><br><br>
         {{/each}}
 
         <input type="submit" value="Alterar">
-    {{/each}}
 
 </form>
+
