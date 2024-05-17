@@ -39,9 +39,8 @@ router.post("/add", async (req, res) => {
   }
 });
 
-//---------parei aqui--------
 // Deletar um registro
-router.delete("/delete/:id", async (req, res) => {
+router.get("/delete/:id", async (req, res) => {
   try {
     await AutoPeca.findByIdAndDelete(req.params.id);
     res.status(200);
@@ -58,7 +57,6 @@ router.get("/product/:id", (req, res) => {
     .then((products) => {
       res.render("form_update", { products: products });
       res.status(200);
-      console.log(products);
     })
     .catch((err) => {
       res.status(500).send(err.message);
@@ -66,16 +64,18 @@ router.get("/product/:id", (req, res) => {
 });
 
 // Alterar um registro
-router.put("/:id", async (req, res) => {
+router.post("/update", async (req, res) => {
   try {
-    const { brand, model, year, piece } = req.body;
-    await AutoPeca.findByIdAndUpdate(req.params.id, {
+    const { _id, brand, model, year, pieces } = req.body;
+    await AutoPeca.findByIdAndUpdate(_id, {
       brand,
       model,
       year,
-      piece,
+      pieces,
     });
-    res.status(200).json({ message: "Atualizado com sucesso" });
+    res.status(200);
+    // redirecionado para home
+    res.redirect("/pecas/home");
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
