@@ -13,8 +13,8 @@ app.use(express.json());
 //carregando o cabeçalho do html em outras páginas
 app.engine("handlebars", handlebars.engine({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-//alterado de true para false
-app.use(bodyParser.urlencoded({ extended: false }));
+//alterado para true
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 //arquivos estáticos
