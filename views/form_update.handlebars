@@ -1,4 +1,4 @@
-<form action="/update" method="POST">
+<form action="/pecas/update" method="POST">
 
         <input class="text" type="text" name="_id" value="{{products._id}}" readonly="true" placeholder="Id" required=""><br>
 
@@ -6,17 +6,19 @@
 
         <input class="text" type="text" name="model" value="{{products.model}}" readonly="true" placeholder="Modelo" required=""><br>
 
-        <input class="text" type="number" name="year" value="{{products.year}}" readonly="true" placeholder="Ano" required=""><br>
+        <input class="text" type="number" name="year" value="{{products.year}}" readonly="true" placeholder="Ano" required=""><br><br>
 
         {{#each products.pieces}}
-        <input class="text" type="text" name="name" value="{{this.name}}" placeholder="Nome" required=""><br>
 
-        <input class="text" type="number" name="amount" value="{{this.amount}}" placeholder="Quantidade" required=""><br>
+        <h2 style="color: #fff;">Peça</h2>
 
-        <input class="text" type="text" name="description" value="{{this.description}}" placeholder="Descrição" required=""><br><br>
+        <input class="text" type="text" name="pieces[{{@index}}][name]" value="{{this.name}}" placeholder="Nome" required=""><br>
+
+        <input class="text" type="number" name="pieces[{{@index}}][amount]" value="{{this.amount}}" placeholder="Quantidade" required=""><br>
+
+        <input class="text" type="text" name="pieces[{{@index}}][description]" value="{{this.description}}" placeholder="Descrição" required=""><br><br>
         {{/each}}
 
         <input type="submit" value="Alterar">
-
 </form>
 
